@@ -9,6 +9,8 @@ open class ParametricCurve2D(
     val yParametricFunction: Function2D
 ) {
 
+    constructor(xAndYParametricFunctions: Pair<Function2D, Function2D>): this(xAndYParametricFunctions.first, xAndYParametricFunctions.second)
+
     fun derivative(x: Double): Double = yParametricFunction.derivative(x) / xParametricFunction.derivative(x)
 
     fun integrate(xStart: Double, xEnd: Double): Double = integrate(xStart,xEnd,200.toUInt())
