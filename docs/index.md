@@ -1,4 +1,10 @@
+<p align="center">
+  <img src="assets/GeomEz-logo.png" alt="GeomEz Logo" width="200"/>
+</p>
+
 # GeomEz
+
+🇺🇸 English | [🇧🇷 Português](pt_BR/)
 
 **GeomEz** is a Kotlin library for building and visualizing 2D and 3D geometric elements. It provides a clean, expressive API for representing points, vectors, directions, coordinate systems, curves, surfaces, and polygons — with full support for affine transforms, analytical calculus on functions, and optional matplotlib-powered visualization.
 

@@ -5,7 +5,8 @@ repo_url: https://github.com/daanrsantiago/GeomEz
 repo_name: daanrsantiago/GeomEz
 
 theme:
-  name: readthedocs
+  name: mkdocs
+  logo: assets/GeomEz-logo.png
   features:
     - navigation.tabs
     - navigation.sections
@@ -13,6 +14,19 @@ theme:
     - navigation.top
     - content.code.copy
     - content.code.annotate
+
+plugins:
+  - search
+  - i18n:
+      docs_structure: suffix
+      languages:
+        - locale: en
+          default: true
+          name: English
+          build: true
+        - locale: pt_BR
+          name: Português
+          build: true
 
 markdown_extensions:
   - pymdownx.highlight:

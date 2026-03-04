@@ -1,4 +1,10 @@
+<p align="center">
+  <img src="docs/assets/GeomEz-logo.png" alt="GeomEz Logo" width="200"/>
+</p>
+
 # GeomEz
+
+🇺🇸 English | [🇧🇷 Português](README.pt-BR.md)
 
 [![Maven Central](https://img.shields.io/maven-central/v/com.geomez/geomez-core?label=Maven%20Central)](https://central.sonatype.com/artifact/com.geomez/geomez-core)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
