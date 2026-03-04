@@ -1,3 +1,3 @@
 rootProject.name = "GeomEz"
-include("geomez-core")
-include("geomez-visualization")
+include(":geomez-core")
+include(":geomez-visualization")
