@@ -1,0 +1,45 @@
+site_name: GeomEz
+site_description: A Kotlin library for building and visualizing 2D and 3D geometric elements
+site_url: https://daanrsantiago.github.io/GeomEz
+repo_url: https://github.com/daanrsantiago/GeomEz
+repo_name: daanrsantiago/GeomEz
+
+theme:
+  name: readthedocs
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.copy
+    - content.code.annotate
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - admonition
+  - pymdownx.details
+  - tables
+  - attr_list
+
+nav:
+  - Home: index.md
+  - Installation: installation.md
+  - 2D Geometry:
+    - Overview: 2d/index.md
+    - Primitives: 2d/primitives.md
+    - Coordinate Systems: 2d/coordinate-systems.md
+    - Functions: 2d/functions.md
+    - Curves: 2d/curves.md
+    - Polygons & Collections: 2d/polygons.md
+  - 3D Geometry:
+    - Overview: 3d/index.md
+    - Primitives: 3d/primitives.md
+    - Coordinate Systems: 3d/coordinate-systems.md
+    - Curves & Surfaces: 3d/curves-and-surfaces.md
+  - Units: units.md
+  - Visualization: visualization.md

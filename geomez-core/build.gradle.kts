@@ -1,16 +1,17 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import java.net.URI
-
 plugins {
+    kotlin("jvm") version "2.2.21"
     `java-library`
     `maven-publish`
     signing
-    kotlin("jvm") version "1.5.21"
+    id("org.jetbrains.dokka") version "2.1.0"
 }
 
-group = "io.github.daniel-tucano"
-version = "0.1.7"
-java.sourceCompatibility = JavaVersion.VERSION_11
+kotlin {
+    jvmToolchain(21)
+}
+
+group = "com.geomez"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
@@ -41,7 +42,7 @@ publishing {
             pom {
                 name.set("geomez-core")
                 description.set("An easy way to build geometric elements")
-                url.set("https://github.com/daniel-tucano/GeomEz")
+                url.set("https://github.com/daanrsantiago/GeomEz")
 
                 licenses {
                     license {
@@ -51,28 +52,20 @@ publishing {
                 }
                 developers {
                     developer {
-                        id.set("daniel-tucano")
+                        id.set("daniel-santiago")
                         name.set("Daniel Ribeiro Santiago")
                         email.set("daanrsantiago@gmail.com")
                     }
                 }
                 scm {
-                    url.set("https://github.com/daniel-tucano/GeomEz")
+                    url.set("https://github.com/daanrsantiago/GeomEz")
                 }
             }
         }
     }
     repositories {
         maven {
-            // change URLs to point to your repos, e.g. http://my.org/repo
-            val releasesRepoUrl = URI("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
-            val snapshotsRepoUrl = URI("https://s01.oss.sonatype.org/content/repositories/snapshots/")
-            url = if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl
-
-            credentials {
-                username = ossrhUsername
-                password = ossrhPassword
-            }
+            url = uri(rootProject.layout.buildDirectory.dir("staging-deploy").get().asFile)
         }
     }
 }
@@ -82,6 +75,7 @@ signing {
 }
 
 dependencies {
+    implementation("org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.21")
     api("space.kscience:kmath-core:0.2.1")
     implementation("space.kscience:kmath-ejml:0.2.1")
     implementation("org.ejml:ejml-simple:0.41")
@@ -94,8 +88,4 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
-}
-
-tasks.withType<KotlinCompile>() {
-    kotlinOptions.jvmTarget = "1.8"
 }

@@ -8,12 +8,17 @@ import utils.sin
  * Represents a cylindrical coordinate with positive angle in anti-clockwise direction and 0 at x-axis
  */
 class CylindricalCoordinate(
+    /** Radial distance from the z-axis. */
     val radius: Double,
+    /** Counter-clockwise angle from the positive x-axis in the xy-plane. */
     val angle: Angle,
+    /** Height along the z-axis. */
     val z: Double
 ) {
 
+    /** Converts this cylindrical coordinate to a Cartesian Point3D. */
     fun toPoint3D(): Point3D = Point3D(radius * cos(angle),radius * sin(angle),z)
+    /** Converts this cylindrical coordinate to a Cartesian Vector3D. */
     fun toVector3D(): Vector3D = Vector3D(radius * cos(angle),radius * sin(angle),z)
 
     /**

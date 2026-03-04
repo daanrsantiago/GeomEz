@@ -11,6 +11,7 @@ import io.github.danielTucano.python.pythonExecution
 import plane.elements.xValues
 import plane.elements.yValues
 
+/** Creates a standalone matplotlib plot of this [Polygon2D] and displays it. */
 fun Polygon2D.plot() {
     pythonExecution {
         val (_, ax) = this.addPlotCommands()
@@ -20,6 +21,13 @@ fun Polygon2D.plot() {
     }
 }
 
+/**
+ * Adds plot commands for this [Polygon2D] to the given [figure] and [axes].
+ * If [figure] or [axes] are null, new instances are created automatically.
+ * @param figure Existing matplotlib figure, or null to create a new one.
+ * @param axes Existing matplotlib axes, or null to create a new subplot.
+ * @return A pair of (Figure, Axes) for further composition.
+ */
 fun Polygon2D.addPlotCommands(figure: Figure? = null, axes: Axes? = null): Pair<Figure, Axes> {
     lateinit var fig: Figure
     lateinit var ax: Axes

@@ -14,16 +14,20 @@ import units.Angle
 import utils.rotationMatrix2D
 import kotlin.math.sqrt
 
+/** A unit 2D direction vector; components are normalized on construction. */
 class Direction2D(
     x: Double,
     y: Double
 ) : VectorialEntity2D(x / sqrt(x * x + y * y), y / sqrt(x * x + y * y)) {
 
     companion object {
+        /** Unit direction along the X axis. */
         val MAIN_X_DIRECTION = Direction2D(1.0, 0.0)
+        /** Unit direction along the Y axis. */
         val MAIN_Y_DIRECTION = Direction2D(0.0, 1.0)
     }
 
+    /** Converts this direction to a Point3D with z=0. */
     fun toPoint3D(): Point3D = Point3D(x, y, 0.0)
 
     /**
@@ -45,12 +49,14 @@ class Direction2D(
         }
     }
 
+    /** Rotates this direction around the origin by [angle]. */
     override fun rotate(angle: Angle): Direction2D {
         val rotationMatrix = rotationMatrix2D(angle)
         val (vX, vY) = rotationMatrix * this.matrix
         return Direction2D(vX, vY)
     }
 
+    /** Rotates this direction around [centerOfRotation] by [angle]; returns a Vector2D if the origin shifts. */
     override fun rotate(centerOfRotation: Point2D, angle: Angle): Entity2D {
         val rotationMatrix = rotationMatrix2D(angle, centerOfRotation)
         val (newHeadX, newHeadY) = rotationMatrix * this.affineMatrix
@@ -110,6 +116,7 @@ class Direction2D(
         }
     }
 
+    /** Returns the opposite direction. */
     override fun unaryMinus(): Direction2D {
         return Direction2D(-x, -y)
     }

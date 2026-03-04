@@ -8,6 +8,7 @@ import io.github.danielTucano.python.pythonExecution
 import plane.elements.Vector2D
 import kotlin.math.abs
 
+/** Creates a standalone matplotlib plot of this [Vector2D] and displays it. */
 fun Vector2D.plot() {
     pythonExecution {
         this.addPlotCommands()
@@ -18,6 +19,13 @@ fun Vector2D.plot() {
     }
 }
 
+/**
+ * Adds plot commands for this [Vector2D] to the given [figure] and [axes].
+ * If [figure] or [axes] are null, new instances are created automatically.
+ * @param figure Existing matplotlib figure, or null to create a new one.
+ * @param axes Existing matplotlib axes, or null to create a new subplot.
+ * @return A pair of (Figure, Axes) for further composition.
+ */
 fun Vector2D.addPlotCommands(figure: Figure? = null, axes: Axes? = null): Pair<Figure, Axes> {
     lateinit var fig: Figure
     lateinit var ax: Axes

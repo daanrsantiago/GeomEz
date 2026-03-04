@@ -2,6 +2,7 @@ package plane
 
 import plane.elements.Point2D
 
+/** A convex polygon; construction validates convexity of the input point list. */
 class ConvexPolygon2D(points: List<Point2D>) : Polygon2D(points) {
 
     /**
@@ -17,6 +18,7 @@ class ConvexPolygon2D(points: List<Point2D>) : Polygon2D(points) {
         }
     }
 
+    /** Returns a new convex polygon scaled by [scalar] around the origin. */
     override fun scale(scalar: Double): ConvexPolygon2D {
         return ConvexPolygon2D(points.map { point2D -> point2D * scalar })
     }

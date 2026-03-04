@@ -8,6 +8,7 @@ import io.github.danielTucano.matplotlib.show
 import io.github.danielTucano.python.pythonExecution
 import plane.elements.Direction2D
 
+/** Creates a standalone matplotlib plot of this [Direction2D] and displays it. */
 fun Direction2D.plot() {
     pythonExecution {
         val (_, ax) = this.addPlotCommands()
@@ -19,6 +20,13 @@ fun Direction2D.plot() {
     }
 }
 
+/**
+ * Adds plot commands for this [Direction2D] to the given [figure] and [axes].
+ * If [figure] or [axes] are null, new instances are created automatically.
+ * @param figure Existing matplotlib figure, or null to create a new one.
+ * @param axes Existing matplotlib axes, or null to create a new subplot.
+ * @return A pair of (Figure, Axes) for further composition.
+ */
 fun Direction2D.addPlotCommands(figure: Figure? = null, axes: Axes? = null): Pair<Figure, Axes> {
     lateinit var fig: Figure
     lateinit var ax: Axes

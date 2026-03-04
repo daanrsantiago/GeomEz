@@ -4,10 +4,13 @@ import space.elements.Point3D
 import space.elements.Vector3D
 import units.Angle
 
-open class Curve3D(override val points: List<Point3D>): Points3DList {
+/** An ordered sequence of Point3D objects representing a 3D curve. */
+open class Curve3D(val points: List<Point3D>) {
 
+    /** Constructs a curve from a vararg list of points. */
     constructor(vararg points3D: Point3D): this(points3D.toList())
 
+    /** Concatenates this curve with [curve], returning a new Curve3D. */
     fun concat(curve: Curve3D): Curve3D = Curve3D(points + curve.points)
 
     /**
@@ -20,7 +23,7 @@ open class Curve3D(override val points: List<Point3D>): Points3DList {
     /**
      * Describe point as if was written in the "asWrittenIn" coordinate system in terms of the "to" coordinate system
      */
-    override fun changeBasis(asWrittenIn: CoordinateSystem3D, to: CoordinateSystem3D): Curve3D {
+    fun changeBasis(asWrittenIn: CoordinateSystem3D, to: CoordinateSystem3D): Curve3D {
         return Curve3D(points.map { it.changeBasis(asWrittenIn, to) })
     }
 

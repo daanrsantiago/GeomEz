@@ -11,9 +11,11 @@ import kotlin.math.pow
  */
 class Polynomial(coefficients: List<Double>) : Function2D {
 
+    /** List of polynomial coefficients ordered from degree 0 to highest (a0 + a1·x + a2·x² + ...). */
     var coefficients: List<Double> = coefficients
         private set
 
+    /** Degree of the polynomial (number of coefficients minus one). */
     var order: Int
         private set
 
@@ -38,6 +40,7 @@ class Polynomial(coefficients: List<Double>) : Function2D {
         return Polynomial(newCoefficients)
     }
 
+    /** Evaluates the analytical derivative at [x]. */
     override fun derivative(x: Double): Double = derivative()(x)
 
     /**
@@ -51,17 +54,20 @@ class Polynomial(coefficients: List<Double>) : Function2D {
         return Polynomial(newCoefficients)
     }
 
+    /** Analytically integrates the polynomial between [xStart] and [xEnd]. */
     override fun integrate(xStart: Double, xEnd: Double): Double {
         val integralPolynomial = integral()
         return integralPolynomial(xEnd) - integralPolynomial(xStart)
     }
 
+    /** Evaluates the polynomial at [x]. */
     override fun invoke(x: Double): Double {
         return  coefficients.reduceIndexed { index, acc, coeff -> acc + x.pow(index) * coeff }
     }
 
     // Polynomial operations
 
+    /** Adds this polynomial with [polynomial]. */
     operator fun plus(polynomial: Polynomial): Polynomial {
         val maxOrder = max(this.order, polynomial.order)
         val newCoefficients = (0..maxOrder).map { index ->
@@ -70,6 +76,7 @@ class Polynomial(coefficients: List<Double>) : Function2D {
         return Polynomial(newCoefficients)
     }
 
+    /** Subtracts [polynomial] from this polynomial. */
     operator fun minus(polynomial: Polynomial): Polynomial {
         val maxOrder = max(this.order, polynomial.order)
         val newCoefficients = (0..maxOrder).map { index ->
@@ -78,6 +85,7 @@ class Polynomial(coefficients: List<Double>) : Function2D {
         return Polynomial(newCoefficients)
     }
 
+    /** Multiplies this polynomial by [polynomial]. */
     operator fun times(polynomial: Polynomial): Polynomial {
         val newCoefficients = MutableList(this.order + polynomial.order + 1) {0.0}
         this.coefficients.forEachIndexed {thisCoeffIndex, thisCoeff ->
@@ -98,6 +106,7 @@ class Polynomial(coefficients: List<Double>) : Function2D {
 
     // Scalar operations
 
+    /** Adds [scalar] to the constant term of this polynomial. */
     operator fun plus(scalar: Double): Polynomial {
         return Polynomial(
             this.coefficients.mapIndexed { index, coeff ->
@@ -110,6 +119,7 @@ class Polynomial(coefficients: List<Double>) : Function2D {
         )
     }
 
+    /** Subtracts [scalar] from the constant term of this polynomial. */
     operator fun minus(scalar: Double): Polynomial {
         return Polynomial(
             this.coefficients.mapIndexed { index, coeff ->
@@ -122,12 +132,14 @@ class Polynomial(coefficients: List<Double>) : Function2D {
         )
     }
 
+    /** Multiplies all coefficients by [scalar]. */
     operator fun times(scalar: Double): Polynomial {
         return Polynomial(
             this.coefficients.map { it * scalar }
         )
     }
 
+    /** Divides all coefficients by [scalar]. */
     operator fun div(scalar: Double): Polynomial {
         return Polynomial(
             this.coefficients.map { it / scalar }

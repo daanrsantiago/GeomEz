@@ -5,6 +5,7 @@ import plane.elements.Direction2D
 import plane.elements.Point2D
 import units.Angle
 
+/** A 2D coordinate system defined by two Direction2D axes and an origin Point2D. */
 class CoordinateSystem2D(
     val xDirection: Direction2D = Direction2D.MAIN_X_DIRECTION,
     val yDirection: Direction2D = Direction2D.MAIN_Y_DIRECTION,
@@ -12,6 +13,7 @@ class CoordinateSystem2D(
 ) {
 
     companion object {
+        /** The standard Cartesian coordinate system (x-axis = (1,0), y-axis = (0,1), origin = (0,0)). */
         val MAIN_2D_COORDINATE_SYSTEM =
             CoordinateSystem2D(
                 Direction2D.MAIN_X_DIRECTION,
@@ -38,6 +40,7 @@ class CoordinateSystem2D(
             )
         }
 
+    /** Returns a new coordinate system rotated by [angle] around its origin. */
     fun rotate( angle: Angle): CoordinateSystem2D {
         return CoordinateSystem2D(
             xDirection.rotate(angle),
@@ -45,6 +48,7 @@ class CoordinateSystem2D(
         )
     }
 
+    /** Checks equality based on axes directions and origin. */
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
@@ -58,6 +62,7 @@ class CoordinateSystem2D(
         return true
     }
 
+    /** Returns a hash code consistent with [equals]. */
     override fun hashCode(): Int {
         var result = xDirection.hashCode()
         result = 31 * result + yDirection.hashCode()

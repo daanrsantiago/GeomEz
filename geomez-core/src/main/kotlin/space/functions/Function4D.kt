@@ -1,5 +1,6 @@
 package space.functions
 
+/** Interface for a scalar function of three variables: f(x,y,z) → Double. */
 interface Function4D {
 
     /**
