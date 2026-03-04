@@ -19,11 +19,14 @@ class Point3D(
     override var z: Double
 ) : Entity3D {
 
+    /** Euclidean distance from the origin (0,0,0). */
     val distanceFromOrigin: Double
         get() = sqrt(x.pow(2.0) + y.pow(2.0) + z.pow(2.0))
 
+    /** Converts this point to a Vector3D with the same coordinates. */
     fun asVector3D(): Vector3D = Vector3D(x, y, z)
 
+    /** Returns the Euclidean distance between this point and [point3D]. */
     fun distanceBetween(point3D: Point3D): Double = (point3D - this).distanceFromOrigin
 
     /**
@@ -43,6 +46,7 @@ class Point3D(
         to.affineMatrix.invert() * asWrittenIn.affineMatrix * this
 
 
+    /** Converts this point to a cylindrical coordinate representation. */
     fun toCylindricalCoordinate(): CylindricalCoordinate {
         val radius = sqrt(distanceFromOrigin.pow(2.0) - this.z.pow(2.0))
         return CylindricalCoordinate(
@@ -56,44 +60,54 @@ class Point3D(
 
 //    Point operations
 
+    /** Element-wise addition with [entity3D]. */
     override operator fun plus(entity3D: Entity3D): Point3D {
         return Point3D(x + entity3D.x, y + entity3D.y, z + entity3D.z)
     }
 
+    /** Element-wise subtraction of [entity3D]. */
     override operator fun minus(entity3D: Entity3D): Point3D {
         return Point3D(x - entity3D.x, y - entity3D.y, z - entity3D.z)
     }
 
+    /** Element-wise multiplication with [entity3D]. */
     operator fun times(entity3D: Entity3D): Point3D {
         return Point3D(x * entity3D.x, y * entity3D.y, z * entity3D.z)
     }
 
+    /** Element-wise division by [entity3D]. */
     operator fun div(entity3D: Entity3D): Point3D {
         return Point3D(x / entity3D.x, y / entity3D.y, z / entity3D.z)
     }
 
+    /** Negates all three components. */
     override operator fun unaryMinus(): Point3D {
         return Point3D(-x, -y, -z)
     }
 
 //    Scalar operations
 
+    /** Scalar addition applied to all three components. */
     override operator fun plus(scalar: Double): Point3D {
         return Point3D(x + scalar, y + scalar, z + scalar)
     }
 
+    /** Scalar subtraction applied to all three components. */
     override operator fun minus(scalar: Double): Point3D {
         return Point3D(x - scalar, y - scalar, z - scalar)
     }
 
+    /** Scalar multiplication applied to all three components. */
     override operator fun times(scalar: Double): Point3D {
         return Point3D(x * scalar, y * scalar, z * scalar)
     }
 
+    /** Scalar division applied to all three components. */
     override operator fun div(scalar: Double): Point3D {
         return Point3D(x / scalar, y / scalar, z / scalar)
     }
 
+    /** Uses delta comparison for floating-point safety. */
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
@@ -107,6 +121,7 @@ class Point3D(
         return true
     }
 
+    /** Returns a hash code consistent with [equals]. */
     override fun hashCode(): Int {
         var result = x.hashCode()
         result = 31 * result + y.hashCode()

@@ -6,9 +6,15 @@ import space.CoordinateSystem3D
 import space.elements.Entity3D
 import units.Angle
 
+/**
+ * Interface representing a 2D geometric entity with x/y components and support for affine
+ * transforms and arithmetic operations.
+ */
 interface Entity2D {
 
+    /** The x coordinate component. */
     val x: Double
+    /** The y coordinate component. */
     val y: Double
 
     /**
@@ -57,28 +63,38 @@ interface Entity2D {
 
     // Two-dimensional Entity operations
 
+    /** Element-wise entity addition. */
     operator fun plus(entity2D: Entity2D): Entity2D
 
+    /** Element-wise entity subtraction. */
     operator fun minus(entity2D: Entity2D): Entity2D
 
+    /** Element-wise entity negation. */
     operator fun unaryMinus(): Entity2D
 
     //    Scalar operations
 
+    /** Scalar addition applied to both components. */
     operator fun plus(scalar: Double): Entity2D
 
+    /** Scalar subtraction applied to both components. */
     operator fun minus(scalar: Double): Entity2D
 
+    /** Scalar multiplication applied to both components. */
     operator fun times(scalar: Double): Entity2D
 
+    /** Scalar division applied to both components. */
     operator fun div(scalar: Double): Entity2D
 
+    /** Destructuring support returning x. */
     operator fun component1(): Double = x
 
+    /** Destructuring support returning y. */
     operator fun component2(): Double = y
 
     //    Component get
 
+    /** Returns x for index 0, y for index 1. */
     operator fun get(index: Int): Double {
         return when (index) {
             0 -> x

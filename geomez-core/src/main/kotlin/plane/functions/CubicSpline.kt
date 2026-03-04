@@ -3,8 +3,7 @@ package plane.functions
 import extensions.times
 import org.ejml.simple.SimpleMatrix
 import plane.CoordinateSystem2D
-import plane.Points2DList
-import plane.elements.Point2D
+import plane.elements.*
 import space.CoordinateSystem3D
 import space.elements.Point3D
 import kotlin.math.ceil
@@ -14,30 +13,31 @@ import kotlin.math.pow
  * Represents a "natural" cubic spline, which have second order derivatives at the end points equal to 0
  */
 class CubicSpline(
-    override val points: List<Point2D>
-) : Function2D, Points2DList {
+    val points: List<Point2D>
+) : Function2D {
 
     /**
      * Certifies that all x values are in ascending order and do not have repetition
      */
     init {
-        if (xPoints.size < 4) {
+        if (points.xPoints.size < 4) {
             throw IllegalArgumentException("Cubic spline must have at least 4 points")
-        } else if (xPoints.sorted() != xPoints) {
+        } else if (points.xPoints.sorted() != points.xPoints) {
             throw IllegalArgumentException("X values are not in ascending order")
-        } else if (xPoints != xPoints.distinct()) {
+        } else if (points.xPoints != points.xPoints.distinct()) {
             throw IllegalArgumentException("Repeated X value present")
         }
     }
 
+    /** Returns the index of the largest x-breakpoint less than or equal to [x]. */
     private fun previousXInRangeIndex(x: Double): Int {
-        if (!inXRange(x)) {
+        if (!points.inXRange(x)) {
             throw java.lang.IllegalArgumentException("X value out of function range")
         }
         // Finding indexes of the points where the provided x would be between
-        var previousXIndex = xPoints.indexOfFirst { it > x } - 1
+        var previousXIndex = points.xPoints.indexOfFirst { it > x } - 1
         if (previousXIndex < 0) {
-            previousXIndex = xPoints.lastIndex - 1
+            previousXIndex = points.xPoints.lastIndex - 1
         }
         return previousXIndex
     }
@@ -123,35 +123,38 @@ class CubicSpline(
 
     val polynomials: List<Polynomial> = calculateCubicSplinePolynomials(points)
 
+    /** Evaluates the derivative of the piecewise cubic spline at [x]. */
     override fun derivative(x: Double): Double = polynomials[previousXInRangeIndex(x)].derivative(x)
 
+    /** Analytically integrates the piecewise cubic spline between [xStart] and [xEnd]. */
     override fun integrate(xStart: Double, xEnd: Double): Double {
         val startPointPreviousXIndex = previousXInRangeIndex(xStart)
         val endPointPreviousXIndex = previousXInRangeIndex(xEnd)
         return (startPointPreviousXIndex..endPointPreviousXIndex).fold(0.0) { acc, i ->
             acc + when (i) {
-                startPointPreviousXIndex -> polynomials[i].integrate(xStart, xPoints[i + 1])
-                endPointPreviousXIndex -> polynomials[i].integrate(xPoints[i], xEnd)
-                else -> polynomials[i].integrate(xPoints[i], xPoints[i + 1])
+                startPointPreviousXIndex -> polynomials[i].integrate(xStart, points.xPoints[i + 1])
+                endPointPreviousXIndex -> polynomials[i].integrate(points.xPoints[i], xEnd)
+                else -> polynomials[i].integrate(points.xPoints[i], points.xPoints[i + 1])
             }
         }
     }
 
+    /** Evaluates the spline at [x] using the appropriate cubic polynomial segment. */
     override fun invoke(x: Double): Double = polynomials[previousXInRangeIndex(x)](x)
 
-    override fun changeBasis(asWrittenIn: CoordinateSystem2D, to: CoordinateSystem2D): List<Point2D> {
+    fun changeBasis(asWrittenIn: CoordinateSystem2D, to: CoordinateSystem2D): List<Point2D> {
         return points.map { it.changeBasis(asWrittenIn, to) }
     }
 
-    override fun changeBasis(asWrittenIn: CoordinateSystem3D, to: CoordinateSystem3D): List<Point3D> {
+    fun changeBasis(asWrittenIn: CoordinateSystem3D, to: CoordinateSystem3D): List<Point3D> {
         return points.map { it.changeBasis(asWrittenIn, to) }
     }
 
-    override fun translateTo(newCentroid: Point2D): CubicSpline {
-        return CubicSpline(this.points.map { it + newCentroid - this.centroid })
+    fun translateTo(newCentroid: Point2D): CubicSpline {
+        return CubicSpline(this.points.map { it + newCentroid - this.points.centroid })
     }
 
-    override fun scale(scalar: Double): CubicSpline {
+    fun scale(scalar: Double): CubicSpline {
         return CubicSpline(this.points.map { it * scalar })
     }
 }

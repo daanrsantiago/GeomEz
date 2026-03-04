@@ -4,9 +4,15 @@ import org.ejml.simple.SimpleMatrix
 import space.CoordinateSystem3D
 import units.Angle
 
+/**
+ * Interface representing a 3D geometric entity with x/y/z components and affine transform support.
+ */
 interface Entity3D {
+    /** The x coordinate component. */
     val x: Double
+    /** The y coordinate component. */
     val y: Double
+    /** The z coordinate component. */
     val z: Double
 
     /**
@@ -47,26 +53,36 @@ interface Entity3D {
 
     // Three-dimensional Entity operations
 
+    /** Element-wise entity addition. */
     operator fun plus(entity3D: Entity3D): Entity3D
 
+    /** Element-wise entity subtraction. */
     operator fun minus(entity3D: Entity3D): Entity3D
 
+    /** Element-wise entity negation. */
     operator fun unaryMinus(): Entity3D
 
     //    Scalar operations
 
+    /** Scalar addition applied to all three components. */
     operator fun plus(scalar: Double): Entity3D
 
+    /** Scalar subtraction applied to all three components. */
     operator fun minus(scalar: Double): Entity3D
 
+    /** Scalar multiplication applied to all three components. */
     operator fun times(scalar: Double): Entity3D
 
+    /** Scalar division applied to all three components. */
     operator fun div(scalar: Double): Entity3D
 
+    /** Destructuring support returning x. */
     operator fun component1(): Double = x
 
+    /** Destructuring support returning y. */
     operator fun component2(): Double = y
 
+    /** Destructuring support returning z. */
     operator fun component3(): Double = z
 
 }

@@ -1,37 +1,35 @@
 package space
 
+import extensions.xValues
+import extensions.yValues
+import extensions.zValues
 import io.github.danielTucano.matplotlib.Axes3D
-import io.github.danielTucano.matplotlib.Colormap
 import io.github.danielTucano.matplotlib.Figure
 import io.github.danielTucano.matplotlib.pyplot.figure
 import io.github.danielTucano.matplotlib.show
 import io.github.danielTucano.python.pythonExecution
-import org.ejml.simple.SimpleMatrix
+import utils.linspace
 
-/** Creates a standalone matplotlib plot of this [ParametricSurface3D] and displays it. */
-fun ParametricSurface3D.plot(T: SimpleMatrix, S: SimpleMatrix, colormap: Colormap? = null) {
+/** Creates a standalone matplotlib plot of this [ParametricCurve3D] and displays it. */
+fun ParametricCurve3D.plot(tList: List<Double> = linspace(0.0, 1.0, 100)) {
     pythonExecution {
-        this.addPlotCommands(T, S, colormap = colormap)
+        this.addPlotCommands(tList = tList)
         show()
     }
 }
 
 /**
- * Adds plot commands for this [ParametricSurface3D] to the given [figure] and [axes].
+ * Adds plot commands for this [ParametricCurve3D] to the given [figure] and [axes].
  * If [figure] or [axes] are null, new instances are created automatically.
- * @param T Parameter mesh matrix for the first surface parameter.
- * @param S Parameter mesh matrix for the second surface parameter.
  * @param figure Existing matplotlib figure, or null to create a new one.
  * @param axes Existing Axes3D, or null to create a new 3D subplot.
- * @param colormap The colormap to use for surface coloring, or null for the default.
+ * @param tList Parameter values to evaluate the curve at. Defaults to 100 evenly spaced points on [0, 1].
  * @return A pair of (Figure, Axes3D) for further composition.
  */
-fun ParametricSurface3D.addPlotCommands(
-    T: SimpleMatrix,
-    S: SimpleMatrix,
+fun ParametricCurve3D.addPlotCommands(
     figure: Figure? = null,
     axes: Axes3D? = null,
-    colormap: Colormap? = null
+    tList: List<Double> = linspace(0.0, 1.0, 100)
 ): Pair<Figure, Axes3D> {
     val fig = when (figure) {
         null -> figure()
@@ -41,10 +39,7 @@ fun ParametricSurface3D.addPlotCommands(
         null -> fig.add_subplot(projection = Figure.AddSubplotProjectionOptions.`3d`) as Axes3D
         else -> axes
     }
-
-    val (X, Y, Z) = this(T, S)
-
-    ax.plot_surface(X, Y, Z, colormap)
-
+    val points = this(tList)
+    ax.plot(points.xValues, points.yValues, points.zValues)
     return fig to ax
 }

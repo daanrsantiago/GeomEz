@@ -21,6 +21,7 @@ fun linspace(start: Double, stop: Double, num: Int): List<Double> {
     return  array.toList()
 }
 
+/** Computes n! iteratively. Throws [IllegalArgumentException] if [number] < 0. */
 fun factorial(number: Int): Long {
     if (number < 0L) {
         throw IllegalArgumentException("The number of which to calculate the factorial must be greater or equal to zero.")
@@ -31,6 +32,10 @@ fun factorial(number: Int): Long {
     }
 }
 
+/**
+ * Creates a 2D meshgrid from [xValues] and [yValues] vectors, returning a pair of matrices
+ * analogous to NumPy meshgrid.
+ */
 fun meshgrid(xValues: List<Double>, yValues: List<Double>): Pair<SimpleMatrix, SimpleMatrix> {
     val X = SimpleMatrix(
         yValues.map {

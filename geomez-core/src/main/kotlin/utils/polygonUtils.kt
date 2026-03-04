@@ -4,6 +4,10 @@ import plane.ConvexPolygon2D
 import plane.elements.Point2D
 import space.elements.Direction3D
 
+/**
+ * Computes the convex hull of [points2D] using Graham scan, returning a pair of the hull as a
+ * ConvexPolygon2D and the remaining interior points.
+ */
 fun convexHull(points2D: List<Point2D>): Pair<ConvexPolygon2D, List<Point2D>> {
     val minYPoint = points2D.sortedBy { it.y }[0]
     val angleSortedPoints = points2D.sortedBy {

@@ -5,6 +5,7 @@ import io.github.danielTucano.matplotlib.pyplot.*
 import io.github.danielTucano.python.pythonExecution
 import space.elements.Direction3D
 
+/** Creates a standalone matplotlib plot of this [Direction3D] and displays it. */
 fun Direction3D.plot() {
     pythonExecution {
         val (_, ax) = this.addPlotCommands()
@@ -18,6 +19,14 @@ fun Direction3D.plot() {
     }
 }
 
+/**
+ * Adds plot commands for this [Direction3D] to the given [figure] and [axes].
+ * If [figure] or [axes] are null, new instances are created automatically.
+ * @param figure Existing matplotlib figure, or null to create a new one.
+ * @param axes Existing Axes3D, or null to create a new 3D subplot.
+ * @param kwargs Optional matplotlib kwargs passed to the quiver call.
+ * @return A pair of (Figure, Axes3D) for further composition.
+ */
 fun Direction3D.addPlotCommands(figure: Figure? = null, axes: Axes3D? = null, kwargs:  Map<KwargKey, KwargValue>? = null): Pair<Figure, Axes3D> {
     val fig = when(figure) {
         null -> figure()

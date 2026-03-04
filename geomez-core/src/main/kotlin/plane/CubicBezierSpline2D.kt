@@ -4,17 +4,25 @@ import plane.elements.Point2D
 import plane.elements.SmoothCubicBezierSplineControlPoints
 import plane.functions.Function2D
 
+/**
+ * A piecewise cubic Bézier spline requiring 4 + 3n control points. Each group of 4 points
+ * (with shared endpoints) forms one cubic Bézier segment.
+ */
 class CubicBezierSpline2D (
+    /** The complete ordered list of control points; must satisfy 4 + 3n size. */
     val controlPoints: List<Point2D>
     ): ParametricCurve2D(createXAndYPiecewiseOpenCubicBezierPolynomial(controlPoints)) {
 
+    /** Individual BezierCurve segments that compose this spline. */
     val bezierCurves = createBezierCurves(controlPoints)
 
+    /** Constructs from a collection of [SmoothCubicBezierSplineControlPoints] segments. */
     constructor(
         smoothCubicBezierSplineControlPoints: Collection<SmoothCubicBezierSplineControlPoints>
     ): this(smoothCubicBezierSplineControlPoints.flatMap { it.getControlPoints() })
 
     companion object {
+        /** Builds BezierCurve objects from the flat [controlPoints] list. */
         fun createBezierCurves(controlPoints: List<Point2D>): List<BezierCurve> {
             check(controlPoints.size >= 4) { "Must have at least 4 points to make bezier curve" }
             check((controlPoints.size - 4) % 3 == 0) { "Must have 4 + 3n points" }
@@ -30,6 +38,9 @@ class CubicBezierSpline2D (
             return bezierCurves
         }
 
+        /**
+         * Maps a global spline parameter t ∈ [0,1] to the appropriate segment and its local parameter.
+         */
         fun selectBezierCurveAndT(bezierCurves: List<BezierCurve>, t: Double): Triple<BezierCurve, Double, Int> {
             check(t in 0.0..1.0) { "x must be in 0.0 to 1.0 range" }
             val tIntervalBetweenCurves = 1.0/bezierCurves.size

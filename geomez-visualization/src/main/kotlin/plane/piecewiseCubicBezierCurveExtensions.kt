@@ -8,6 +8,7 @@ import plane.elements.xValues
 import plane.elements.yValues
 import utils.linspace
 
+/** Creates a standalone matplotlib plot of this [CubicBezierSpline2D] and displays it. */
 fun CubicBezierSpline2D.plot(tList: List<Double> = linspace(0.0, 1.0, 100)) {
     pythonExecution {
         val (_, ax) = this.addPlotCommands(tList = tList)
@@ -17,6 +18,13 @@ fun CubicBezierSpline2D.plot(tList: List<Double> = linspace(0.0, 1.0, 100)) {
     }
 }
 
+/**
+ * Adds plot commands for this [CubicBezierSpline2D] to the given [figure] and [axes].
+ * If [figure] or [axes] are null, new instances are created automatically.
+ * @param figure Existing matplotlib figure, or null to create a new one.
+ * @param axes Existing matplotlib axes, or null to create a new subplot.
+ * @return A pair of (Figure, Axes) for further composition.
+ */
 fun CubicBezierSpline2D.addPlotCommands(
     figure: Figure? = null,
     axes: Axes? = null,

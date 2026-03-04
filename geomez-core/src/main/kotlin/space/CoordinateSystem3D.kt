@@ -5,6 +5,7 @@ import space.elements.Direction3D
 import space.elements.Point3D
 import units.Angle
 
+/** A 3D coordinate system defined by three Direction3D axes and an origin Point3D. */
 open class CoordinateSystem3D(
     val xDirection: Direction3D = Direction3D.MAIN_X_DIRECTION,
     val yDirection: Direction3D = Direction3D.MAIN_Y_DIRECTION,
@@ -13,6 +14,7 @@ open class CoordinateSystem3D(
 ) {
 
     companion object {
+        /** The standard Cartesian 3D coordinate system. */
         val MAIN_3D_COORDINATE_SYSTEM =
             CoordinateSystem3D(
                 Direction3D.MAIN_X_DIRECTION,
@@ -22,6 +24,7 @@ open class CoordinateSystem3D(
             )
     }
 
+    /** 3×3 rotation matrix formed from the axis direction column vectors. */
     val matrix: SimpleMatrix = xDirection.matrix
         .combine(0, 1, yDirection.matrix)
         .combine(0, 2, zDirection.matrix)
@@ -46,6 +49,7 @@ open class CoordinateSystem3D(
             )
         }
 
+    /** Returns a new coordinate system rotated around [axis] by [angle]. */
     fun rotate(axis: Direction3D, angle: Angle): CoordinateSystem3D {
         return CoordinateSystem3D(
             xDirection.rotate(axis, angle) as Direction3D,
@@ -54,6 +58,7 @@ open class CoordinateSystem3D(
         )
     }
 
+    /** Checks equality based on axes directions. */
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false
@@ -67,6 +72,7 @@ open class CoordinateSystem3D(
         return true
     }
 
+    /** Returns a hash code consistent with [equals]. */
     override fun hashCode(): Int {
         var result = xDirection.hashCode()
         result = 31 * result + yDirection.hashCode()

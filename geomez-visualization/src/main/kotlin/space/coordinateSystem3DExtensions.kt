@@ -8,6 +8,7 @@ import io.github.danielTucano.matplotlib.pyplot.ylim
 import io.github.danielTucano.python.pythonExecution
 import kotlin.math.min
 
+/** Creates a standalone matplotlib plot of this [CoordinateSystem3D] and displays it. */
 fun CoordinateSystem3D.plot() {
     pythonExecution {
         val (_, ax) = addPlotCommands()
@@ -19,6 +20,15 @@ fun CoordinateSystem3D.plot() {
     }
 }
 
+/**
+ * Adds plot commands for this [CoordinateSystem3D] to the given [figure] and [axes].
+ * If [figure] or [axes] are null, new instances are created automatically.
+ * Draws each axis as a quiver arrow (x=red, y=green, z=blue) scaled by [scale].
+ * @param figure Existing matplotlib figure, or null to create a new one.
+ * @param axes Existing Axes3D, or null to create a new 3D subplot.
+ * @param scale Scale factor applied to each axis arrow length.
+ * @return A pair of (Figure, Axes3D) for further composition.
+ */
 fun CoordinateSystem3D.addPlotCommands(figure: Figure? = null, axes: Axes3D? = null, scale: Double = 1.0): Pair<Figure, Axes3D> {
     val fig = when(figure) {
         null -> figure()
