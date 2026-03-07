@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../assets/GeomEz-logo.png" alt="GeomEz Logo" width="200"/>
+  <img src="img/favicon.ico" alt="GeomEz Logo" width="200" style="border-radius: 50%; background: transparent; border: none;"/>
 </p>
 
 # GeomEz

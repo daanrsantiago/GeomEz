@@ -6,7 +6,7 @@ repo_name: daanrsantiago/GeomEz
 
 theme:
   name: mkdocs
-  logo: assets/GeomEz-logo.png
+  logo: img/GeomEz-logo-no-bg.png
   features:
     - navigation.tabs
     - navigation.sections
