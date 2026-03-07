@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt_BR" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://daanrsantiago.github.io/GeomEz/pt_BR/3d/curves-and-surfaces/">
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>Curves & Surfaces - GeomEz</title>
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../../css/brands.min.css" rel="stylesheet">
+        <link href="../../../css/solid.min.css" rel="stylesheet">
+        <link href="../../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../../">GeomEz</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../../" class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../installation/" class="nav-link">Installation</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">2D Geometry</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../2d/" class="dropdown-item">Overview</a>
+</li>
+                                    
+<li>
+    <a href="../../2d/primitives/" class="dropdown-item">Primitives</a>
+</li>
+                                    
+<li>
+    <a href="../../2d/coordinate-systems/" class="dropdown-item">Coordinate Systems</a>
+</li>
+                                    
+<li>
+    <a href="../../2d/functions/" class="dropdown-item">Functions</a>
+</li>
+                                    
+<li>
+    <a href="../../2d/curves/" class="dropdown-item">Curves</a>
+</li>
+                                    
+<li>
+    <a href="../../2d/polygons/" class="dropdown-item">Polygons & Collections</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">3D Geometry</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../" class="dropdown-item">Overview</a>
+</li>
+                                    
+<li>
+    <a href="../primitives/" class="dropdown-item">Primitives</a>
+</li>
+                                    
+<li>
+    <a href="../coordinate-systems/" class="dropdown-item">Coordinate Systems</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Curves & Surfaces</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../units/" class="nav-link">Units</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../visualization/" class="nav-link">Visualization</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../coordinate-systems/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../../units/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/daanrsantiago/GeomEz/edit/master/docs/3d/curves-and-surfaces.pt_BR.md" class="nav-link">Edit on daanrsantiago/GeomEz
+                                    </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#curvas-e-superficies-3d" class="nav-link">Curvas e Superfícies (3D)</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#parametriccurve3d" class="nav-link">ParametricCurve3D</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#parametricsurface3d" class="nav-link">ParametricSurface3D</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#curve3d" class="nav-link">Curve3D</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="curvas-e-superficies-3d">Curvas e Superfícies (3D)</h1>
+<h2 id="parametriccurve3d">ParametricCurve3D</h2>
+<p>Uma curva paramétrica 3D definida por três instâncias de <code>Function2D</code> — uma para cada coordenada — avaliada para t ∈ [0, 1].</p>
+<pre class="highlight"><code class="language-kotlin">import space.ParametricCurve3D
+import plane.functions.Polynomial
+import utils.linspace
+import kotlin.math.PI
+
+// Linha reta de (0,0,0) a (1,2,3)
+val linha = ParametricCurve3D(
+    xParametricFunction = Polynomial(listOf(0.0, 1.0)),   // x(t) = t
+    yParametricFunction = Polynomial(listOf(0.0, 2.0)),   // y(t) = 2t
+    zParametricFunction = Polynomial(listOf(0.0, 3.0))    // z(t) = 3t
+)
+
+val pontoCentral: Point3D = linha(0.5)   // Point3D(0.5, 1.0, 1.5)
+
+// Avaliar em múltiplos parâmetros
+val pontos: List&lt;Point3D&gt; = linha(linspace(0.0, 1.0, 50))</code></pre>
+<h3 id="visualizacao">Visualização</h3>
+<pre class="highlight"><code class="language-kotlin">// requer geomez-visualization
+linha.plot()</code></pre>
+<p><img alt="Linha 3D" src="../../../img/line-3d.png" /></p>
+<hr />
+<h2 id="parametricsurface3d">ParametricSurface3D</h2>
+<p>Uma superfície paramétrica 3D definida por três instâncias de <code>Function3D</code> mapeando (t, s) → (x, y, z).</p>
+<h3 id="definindo-uma-superficie">Definindo uma superfície</h3>
+<p>Implemente as três funções de coordenadas usando objetos anônimos ou lambdas:</p>
+<pre class="highlight"><code class="language-kotlin">import space.ParametricSurface3D
+import space.functions.Function3D
+import kotlin.math.cos
+import kotlin.math.sin
+
+// Toro: r = 2 (raio maior), a = 0.5 (raio do tubo)
+val toro = ParametricSurface3D(
+    xParametricFunction = object : Function3D {
+        override fun invoke(t: Double, s: Double) = (2 + 0.5 * cos(s)) * cos(t)
+    },
+    yParametricFunction = object : Function3D {
+        override fun invoke(t: Double, s: Double) = (2 + 0.5 * cos(s)) * sin(t)
+    },
+    zParametricFunction = object : Function3D {
+        override fun invoke(t: Double, s: Double) = 0.5 * sin(s)
+    }
+)</code></pre>
+<p><img alt="Toroide" src="../../../img/toroid.png" /></p>
+<p>Ou herdar diretamente para manter a organização:</p>
+<pre class="highlight"><code class="language-kotlin">class Esfera(val raio: Double) : ParametricSurface3D(
+    xParametricFunction = object : Function3D {
+        override fun invoke(t: Double, s: Double) = raio * cos(t) * sin(s)
+    },
+    yParametricFunction = object : Function3D {
+        override fun invoke(t: Double, s: Double) = raio * sin(t) * sin(s)
+    },
+    zParametricFunction = object : Function3D {
+        override fun invoke(t: Double, s: Double) = raio * cos(s)
+    }
+)</code></pre>
+<h3 id="avaliando-um-unico-ponto">Avaliando um único ponto</h3>
+<pre class="highlight"><code class="language-kotlin">val esfera = Esfera(raio = 1.0)
+
+val p: Point3D = esfera(t = 0.0, s = Math.PI / 2)   // equador em t=0</code></pre>
+<h3 id="avaliando-sobre-uma-malha">Avaliando sobre uma malha</h3>
+<pre class="highlight"><code class="language-kotlin">import utils.linspace
+import utils.meshgrid
+
+val (T, S) = meshgrid(
+    linspace(0.0, 2 * Math.PI, 40),
+    linspace(0.0, Math.PI, 40)
+)
+
+// Retorna três objetos SimpleMatrix (um por coordenada)
+val (X, Y, Z) = esfera(T, S)</code></pre>
+<h3 id="visualizacao_1">Visualização</h3>
+<pre class="highlight"><code class="language-kotlin">// requer geomez-visualization
+import utils.linspace
+import utils.meshgrid
+
+val (T, S) = meshgrid(
+    linspace(0.0, 2 * Math.PI, 40),
+    linspace(0.0, Math.PI, 40)
+)
+esfera.plot(T, S)</code></pre>
+<p><img alt="Esfera" src="../../../img/sphere.png" /></p>
+<h3 id="vetor-normal">Vetor normal</h3>
+<p>Calcule a normal numérica da superfície em qualquer par de parâmetros:</p>
+<pre class="highlight"><code class="language-kotlin">val normal: Vector3D = esfera.numericalNormalDirection(t = 0.5, s = 1.0)
+// A normal está ancorada no ponto da superfície
+println(normal.position)   // o ponto na superfície</code></pre>
+<p>Amostre normais ao longo da superfície e sobreponha-as no gráfico da esfera:</p>
+<pre class="highlight"><code class="language-kotlin">// requer geomez-visualization
+import utils.linspace
+import utils.meshgrid
+
+val esfera = Esfera(raio = 1.0)
+
+// Grade de parâmetros grosseira para as normais
+val tValues = linspace(0.0, 2 * Math.PI, 8)
+val sValues = linspace(0.5, Math.PI - 0.5, 6)
+
+val normais: List&lt;Vector3D&gt; = tValues.flatMap { t -&gt;
+    sValues.map { s -&gt; -esfera.numericalNormalDirection(t, s) }
+}
+
+// Grade fina para a malha da superfície
+val (T, S) = meshgrid(
+    linspace(0.0, 2 * Math.PI, 40),
+    linspace(0.0, Math.PI, 40)
+)
+
+pythonExecution {
+    val (fig, ax) = esfera.addPlotCommands(T, S)
+    normais.addPlotCommands(fig, ax, scale = 0.3)
+    show()
+}</code></pre>
+<p><img alt="Normais da Esfera" src="../../../img/sphere-normals.png" /></p>
+<hr />
+<h2 id="curve3d">Curve3D</h2>
+<p>Uma sequência ordenada de valores <code>Point3D</code> — o equivalente 3D de <code>Curve2D</code>. Útil para armazenar curvas discretizadas ou como resultado de projetar curvas 2D no espaço 3D.</p>
+<pre class="highlight"><code class="language-kotlin">import space.Curve3D
+import space.elements.Point3D
+
+val helice = Curve3D(
+    (0..100).map { i -&gt;
+        val t = i / 100.0 * 2 * Math.PI
+        Point3D(cos(t), sin(t), t / (2 * Math.PI))
+    }
+)</code></pre>
+<p><img alt="Curva 3D Hélice" src="../../../img/helix-3d.png" /></p>
+<h3 id="visualizando-uma-curva-2d-em-3d-apos-mudanca-de-base">Visualizando uma curva 2D em 3D após mudança de base</h3>
+<pre class="highlight"><code class="language-kotlin">import plane.Polygon2D
+import plane.CoordinateSystem2D
+import space.CoordinateSystem3D
+import space.Curve3D
+import space.elements.Direction3D
+import units.Angle
+
+val quadrado = Polygon2D(listOf(
+    Point2D(0.0, 0.0), Point2D(1.0, 0.0),
+    Point2D(1.0, 1.0), Point2D(0.0, 1.0)
+))
+
+// Inclinar o polígono 45° e elevá-lo para 3D
+val sistemaInclinado = CoordinateSystem3D(
+    xDirection = Direction3D.MAIN_X_DIRECTION.rotate(
+        Direction3D.MAIN_Z_DIRECTION, Angle.Degrees(45.0)
+    ) as Direction3D,
+    yDirection = Direction3D.MAIN_Z_DIRECTION,
+    zDirection = Direction3D.MAIN_Y_DIRECTION.rotate(
+        Direction3D.MAIN_Z_DIRECTION, Angle.Degrees(45.0)
+    ) as Direction3D
+)
+
+val curva3D = Curve3D(
+    quadrado.changeBasis(
+        asWrittenIn = sistemaInclinado,
+        to          = CoordinateSystem3D.MAIN_3D_COORDINATE_SYSTEM
+    )
+)
+
+curva3D.points.plot()   // requer geomez-visualization</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../js/base.js"></script>
+        <script src="../../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

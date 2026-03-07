@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://daanrsantiago.github.io/GeomEz/2d/functions/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Functions - GeomEz</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">GeomEz</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../installation/" class="nav-link">Installation</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">2D Geometry</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../" class="dropdown-item">Overview</a>
+</li>
+                                    
+<li>
+    <a href="../primitives/" class="dropdown-item">Primitives</a>
+</li>
+                                    
+<li>
+    <a href="../coordinate-systems/" class="dropdown-item">Coordinate Systems</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Functions</a>
+</li>
+                                    
+<li>
+    <a href="../curves/" class="dropdown-item">Curves</a>
+</li>
+                                    
+<li>
+    <a href="../polygons/" class="dropdown-item">Polygons & Collections</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">3D Geometry</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../3d/" class="dropdown-item">Overview</a>
+</li>
+                                    
+<li>
+    <a href="../../3d/primitives/" class="dropdown-item">Primitives</a>
+</li>
+                                    
+<li>
+    <a href="../../3d/coordinate-systems/" class="dropdown-item">Coordinate Systems</a>
+</li>
+                                    
+<li>
+    <a href="../../3d/curves-and-surfaces/" class="dropdown-item">Curves & Surfaces</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../units/" class="nav-link">Units</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../visualization/" class="nav-link">Visualization</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../coordinate-systems/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../curves/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/daanrsantiago/GeomEz/edit/master/docs/2d/functions.md" class="nav-link">Edit on daanrsantiago/GeomEz
+                                    </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#scalar-functions-2d" class="nav-link">Scalar Functions (2D)</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#function2d-interface" class="nav-link">Function2D interface</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#polynomial" class="nav-link">Polynomial</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#linearspline" class="nav-link">LinearSpline</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#cubicspline" class="nav-link">CubicSpline</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#tangent-and-normal-directions" class="nav-link">Tangent and normal directions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="scalar-functions-2d">Scalar Functions (2D)</h1>
+<p>The <code>Function2D</code> interface represents a scalar function <strong>f(x) → Double</strong> and is the foundation for splines, parametric curves, and Bézier curves.</p>
+<h2 id="function2d-interface">Function2D interface</h2>
+<pre class="highlight"><code class="language-kotlin">interface Function2D {
+    operator fun invoke(x: Double): Double
+    operator fun invoke(xArray: DoubleArray): List&lt;Double&gt;
+    operator fun invoke(xCollection: Collection&lt;Double&gt;): List&lt;Double&gt;
+    fun derivative(x: Double): Double
+    fun integrate(xStart: Double, xEnd: Double): Double
+    fun tangentDirection(x: Double): Direction2D
+    fun normalDirection(x: Double): Direction2D
+}</code></pre>
+<hr />
+<h2 id="polynomial">Polynomial</h2>
+<p>A polynomial whose coefficients are ordered from the <strong>lowest degree to the highest</strong>:</p>
+<pre class="highlight"><code>Polynomial([a0, a1, a2, a3]) = a0 + a1·x + a2·x² + a3·x³</code></pre>
+<pre class="highlight"><code class="language-kotlin">import plane.functions.Polynomial
+
+// p(x) = 1 + 2x + 3x²
+val p = Polynomial(listOf(1.0, 2.0, 3.0))
+
+println(p(2.0))          // 1 + 4 + 12 = 17.0
+println(p.order)         // 2</code></pre>
+<h3 id="derivative-and-integral">Derivative and integral</h3>
+<pre class="highlight"><code class="language-kotlin">val p = Polynomial(listOf(1.0, 2.0, 3.0))   // 1 + 2x + 3x²
+
+// Analytical derivative → 2 + 6x
+val dp = p.derivative()
+println(dp(1.0))   // 8.0
+
+// Analytical indefinite integral (integration constant = 0)
+val ip = p.integral()
+
+// Definite integral between bounds
+val area = p.integrate(0.0, 2.0)</code></pre>
+<h3 id="arithmetic-between-polynomials">Arithmetic between polynomials</h3>
+<pre class="highlight"><code class="language-kotlin">val p1 = Polynomial(listOf(1.0, 2.0))   // 1 + 2x
+val p2 = Polynomial(listOf(0.0, 1.0))   // x
+
+val sum     = p1 + p2          // 1 + 3x
+val product = p1 * p2          // x + 2x²
+val squared = p1 pow 2         // (1 + 2x)²</code></pre>
+<h3 id="scalar-arithmetic">Scalar arithmetic</h3>
+<pre class="highlight"><code class="language-kotlin">val p = Polynomial(listOf(1.0, 2.0, 3.0))
+
+val shifted  = p + 5.0    // adds 5 to the constant term
+val scaled   = p * 2.0    // multiplies every coefficient by 2
+val halved   = p / 2.0</code></pre>
+<hr />
+<h2 id="linearspline">LinearSpline</h2>
+<p>Piecewise linear interpolation through a set of <code>Point2D</code> nodes. x-values must be strictly ascending.</p>
+<pre class="highlight"><code class="language-kotlin">import plane.functions.LinearSpline
+import plane.elements.Point2D
+
+val spline = LinearSpline(listOf(
+    Point2D(0.0, 0.0),
+    Point2D(1.0, 2.0),
+    Point2D(2.0, 1.0),
+    Point2D(3.0, 3.0)
+))
+
+println(spline(0.5))              // 1.0  (midpoint of first segment)
+println(spline.derivative(0.5))   // 2.0  (slope of first segment)
+println(spline.integrate(0.0, 3.0))</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The derivative is constant within each segment and undefined at knots (returns the slope of the left segment).</p>
+</div>
+<hr />
+<h2 id="cubicspline">CubicSpline</h2>
+<p>A natural cubic spline (second derivative = 0 at both endpoints) fitted through a set of <code>Point2D</code> nodes. Requires <strong>at least 4 points</strong> with strictly ascending x-values.</p>
+<p>Each segment between two consecutive knots is represented as a <code>Polynomial</code> of degree ≤ 3.</p>
+<pre class="highlight"><code class="language-kotlin">import plane.functions.CubicSpline
+import plane.elements.Point2D
+
+val spline = CubicSpline(listOf(
+    Point2D(0.0, 0.0),
+    Point2D(1.0, 2.0),
+    Point2D(2.0, 1.5),
+    Point2D(3.0, 3.0),
+    Point2D(4.0, 1.0)
+))
+
+val y     = spline(1.5)               // interpolated value
+val slope = spline.derivative(1.5)    // smooth first derivative
+val area  = spline.integrate(0.0, 4.0)</code></pre>
+<h3 id="accessing-the-underlying-polynomials">Accessing the underlying polynomials</h3>
+<pre class="highlight"><code class="language-kotlin">spline.polynomials.forEachIndexed { i, poly -&gt;
+    println("Segment $i: coefficients = ${poly.coefficients}")
+}</code></pre>
+<h3 id="visualization">Visualization</h3>
+<pre class="highlight"><code class="language-kotlin">// requires geomez-visualization
+spline.plot()</code></pre>
+<p>The blue dashed line shows a <code>LinearSpline</code> and the red line a <code>CubicSpline</code> through the same knot points (black dots):</p>
+<p><img alt="Spline comparison" src="../../img/spline-comparison.png" /></p>
+<hr />
+<h2 id="tangent-and-normal-directions">Tangent and normal directions</h2>
+<p>All <code>Function2D</code> implementations expose:</p>
+<pre class="highlight"><code class="language-kotlin">val spline = CubicSpline(points)
+
+// Unit tangent direction at x = 1.5
+val tangent = spline.tangentDirection(1.5)   // Direction2D
+
+// Unit normal direction (perpendicular, anti-clockwise)
+val normal  = spline.normalDirection(1.5)    // Direction2D</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

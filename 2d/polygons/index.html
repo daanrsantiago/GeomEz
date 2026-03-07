@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://daanrsantiago.github.io/GeomEz/2d/polygons/">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>Polygons & Collections - GeomEz</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../css/brands.min.css" rel="stylesheet">
+        <link href="../../css/solid.min.css" rel="stylesheet">
+        <link href="../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../..">GeomEz</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../installation/" class="nav-link">Installation</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">2D Geometry</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../" class="dropdown-item">Overview</a>
+</li>
+                                    
+<li>
+    <a href="../primitives/" class="dropdown-item">Primitives</a>
+</li>
+                                    
+<li>
+    <a href="../coordinate-systems/" class="dropdown-item">Coordinate Systems</a>
+</li>
+                                    
+<li>
+    <a href="../functions/" class="dropdown-item">Functions</a>
+</li>
+                                    
+<li>
+    <a href="../curves/" class="dropdown-item">Curves</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Polygons & Collections</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">3D Geometry</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../3d/" class="dropdown-item">Overview</a>
+</li>
+                                    
+<li>
+    <a href="../../3d/primitives/" class="dropdown-item">Primitives</a>
+</li>
+                                    
+<li>
+    <a href="../../3d/coordinate-systems/" class="dropdown-item">Coordinate Systems</a>
+</li>
+                                    
+<li>
+    <a href="../../3d/curves-and-surfaces/" class="dropdown-item">Curves & Surfaces</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../units/" class="nav-link">Units</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../visualization/" class="nav-link">Visualization</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../curves/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../../3d/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/daanrsantiago/GeomEz/edit/master/docs/2d/polygons.md" class="nav-link">Edit on daanrsantiago/GeomEz
+                                    </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#polygons-collections-2d" class="nav-link">Polygons &amp; Collections (2D)</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#listpoint2d-extensions" class="nav-link">List&lt;Point2D&gt; Extensions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#curve2d" class="nav-link">Curve2D</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#polygon2d" class="nav-link">Polygon2D</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#convexpolygon2d" class="nav-link">ConvexPolygon2D</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="polygons-collections-2d">Polygons &amp; Collections (2D)</h1>
+<h2 id="listpoint2d-extensions">List&lt;Point2D&gt; Extensions</h2>
+<p><code>List&lt;Point2D&gt;</code> has extension functions for coordinate extraction, bounding-box queries, arc-length, centroid, and parametric functions. These are available on any <code>List&lt;Point2D&gt;</code>, including the <code>points</code> property of <code>Curve2D</code>, <code>Polygon2D</code>, <code>LinearSpline</code>, and <code>CubicSpline</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Extension</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>xPoints</code></td>
+<td><code>List&lt;Double&gt;</code></td>
+<td>x-coordinates</td>
+</tr>
+<tr>
+<td><code>yPoints</code></td>
+<td><code>List&lt;Double&gt;</code></td>
+<td>y-coordinates</td>
+</tr>
+<tr>
+<td><code>length</code></td>
+<td><code>Double</code></td>
+<td>Arc length (sum of segment lengths)</td>
+</tr>
+<tr>
+<td><code>centroid</code></td>
+<td><code>Point2D</code></td>
+<td>Arithmetic mean of all points</td>
+</tr>
+<tr>
+<td><code>minX</code>, <code>maxX</code></td>
+<td><code>Double</code></td>
+<td>x-axis bounds</td>
+</tr>
+<tr>
+<td><code>minY</code>, <code>maxY</code></td>
+<td><code>Double</code></td>
+<td>y-axis bounds</td>
+</tr>
+</tbody>
+</table>
+<pre class="highlight"><code class="language-kotlin">val curve = Curve2D(Point2D(0.0, 0.0), Point2D(1.0, 1.0), Point2D(2.0, 0.0))
+
+println(curve.points.length)      // arc length
+println(curve.points.centroid)    // mean point
+println(curve.points.minX)        // 0.0</code></pre>
+<h3 id="range-checks">Range checks</h3>
+<pre class="highlight"><code class="language-kotlin">curve.points.inXRange(1.5)   // true if 1.5 is within [minX, maxX]
+curve.points.inYRange(2.0)   // false if 2.0 is outside [minY, maxY]</code></pre>
+<h3 id="parametric-functions-from-the-point-list">Parametric functions from the point list</h3>
+<p>Extract <code>Function2D</code> objects by interpolating the point list:</p>
+<pre class="highlight"><code class="language-kotlin">val xFn: Function2D = curve.points.xParametricFunction()
+val yFn: Function2D = curve.points.yParametricFunction()</code></pre>
+<hr />
+<h2 id="curve2d">Curve2D</h2>
+<p>An open, ordered sequence of <code>Point2D</code> values. Supports concatenation and arithmetic transforms.</p>
+<pre class="highlight"><code class="language-kotlin">import plane.Curve2D
+import plane.elements.Point2D
+
+val c1 = Curve2D(Point2D(0.0, 0.0), Point2D(1.0, 1.0))
+val c2 = Curve2D(Point2D(1.0, 1.0), Point2D(2.0, 0.0))
+
+val combined: Curve2D = c1.concat(c2)</code></pre>
+<h3 id="arithmetic">Arithmetic</h3>
+<pre class="highlight"><code class="language-kotlin">val c = Curve2D(Point2D(0.0, 0.0), Point2D(1.0, 1.0))
+
+// Translate all points by a vector
+val shifted = c + Point2D(1.0, 0.0)
+
+// Scale all points
+val scaled = c * 3.0</code></pre>
+<h3 id="rotation">Rotation</h3>
+<pre class="highlight"><code class="language-kotlin">import units.Angle
+
+val rotated = c.rotate(Angle.Degrees(45.0))
+val rotatedAround = c.rotate(Point2D(1.0, 0.0), Angle.Degrees(90.0))</code></pre>
+<hr />
+<h2 id="polygon2d">Polygon2D</h2>
+<p>A closed polygon. The first point is implicitly repeated to close the shape.</p>
+<pre class="highlight"><code class="language-kotlin">import plane.Polygon2D
+import plane.elements.Point2D
+
+val triangle = Polygon2D(listOf(
+    Point2D(0.0, 0.0),
+    Point2D(2.0, 0.0),
+    Point2D(1.0, 2.0)
+))
+
+println(triangle.area)   // computed via the shoelace formula</code></pre>
+<h3 id="closed-point-list">Closed point list</h3>
+<pre class="highlight"><code class="language-kotlin">// Returns points with the first point appended at the end
+triangle.pointsClosedPolygon   // List&lt;Point2D&gt; of size n+1</code></pre>
+<h3 id="rotation_1">Rotation</h3>
+<pre class="highlight"><code class="language-kotlin">import units.Angle
+
+val rotated = triangle.rotate(Angle.Degrees(90.0))
+val rotatedAround = triangle.rotate(Point2D(1.0, 1.0), Angle.Degrees(45.0))</code></pre>
+<h3 id="visualization">Visualization</h3>
+<pre class="highlight"><code class="language-kotlin">// requires geomez-visualization
+triangle.plot()</code></pre>
+<p><img alt="Polygon2D example" src="../../img/polygon-2d.png" /></p>
+<hr />
+<h2 id="convexpolygon2d">ConvexPolygon2D</h2>
+<p>A subtype of <code>Polygon2D</code> that represents a convex polygon. Typically obtained via the convex-hull utility:</p>
+<pre class="highlight"><code class="language-kotlin">import utils.convexHull
+import plane.elements.Point2D
+
+val points = listOf(
+    Point2D(0.0, 0.0),
+    Point2D(1.0, 2.0),
+    Point2D(2.0, 1.0),
+    Point2D(0.5, 0.5),   // interior point — excluded from hull
+    Point2D(3.0, 0.0)
+)
+
+val (convexPolygon, hullIndices) = convexHull(points)
+// convexPolygon: ConvexPolygon2D
+// hullIndices: List&lt;Int&gt; — indices of the hull vertices in the original list</code></pre>
+<p><img alt="ConvexPolygon2D example" src="../../img/convex-hull.png" /></p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../js/base.js"></script>
+        <script src="../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

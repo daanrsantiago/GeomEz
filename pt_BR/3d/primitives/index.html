@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt_BR" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://daanrsantiago.github.io/GeomEz/pt_BR/3d/primitives/">
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>Primitives - GeomEz</title>
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../../../css/brands.min.css" rel="stylesheet">
+        <link href="../../../css/solid.min.css" rel="stylesheet">
+        <link href="../../../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../../">GeomEz</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="../../" class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../installation/" class="nav-link">Installation</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">2D Geometry</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../../2d/" class="dropdown-item">Overview</a>
+</li>
+                                    
+<li>
+    <a href="../../2d/primitives/" class="dropdown-item">Primitives</a>
+</li>
+                                    
+<li>
+    <a href="../../2d/coordinate-systems/" class="dropdown-item">Coordinate Systems</a>
+</li>
+                                    
+<li>
+    <a href="../../2d/functions/" class="dropdown-item">Functions</a>
+</li>
+                                    
+<li>
+    <a href="../../2d/curves/" class="dropdown-item">Curves</a>
+</li>
+                                    
+<li>
+    <a href="../../2d/polygons/" class="dropdown-item">Polygons & Collections</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">3D Geometry</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../" class="dropdown-item">Overview</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Primitives</a>
+</li>
+                                    
+<li>
+    <a href="../coordinate-systems/" class="dropdown-item">Coordinate Systems</a>
+</li>
+                                    
+<li>
+    <a href="../curves-and-surfaces/" class="dropdown-item">Curves & Surfaces</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../units/" class="nav-link">Units</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../../visualization/" class="nav-link">Visualization</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../coordinate-systems/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/daanrsantiago/GeomEz/edit/master/docs/3d/primitives.pt_BR.md" class="nav-link">Edit on daanrsantiago/GeomEz
+                                    </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#primitivas-3d" class="nav-link">Primitivas 3D</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#point3d" class="nav-link">Point3D</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#vector3d" class="nav-link">Vector3D</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#direction3d" class="nav-link">Direction3D</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#cylindricalcoordinate" class="nav-link">CylindricalCoordinate</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="primitivas-3d">Primitivas 3D</h1>
+<h2 id="point3d">Point3D</h2>
+<p>Um ponto 3D imutável com igualdade segura para ponto flutuante (delta ≈ 1×10⁻¹⁰).</p>
+<pre class="highlight"><code class="language-kotlin">import space.elements.Point3D
+
+val p = Point3D(1.0, 2.0, 3.0)
+println(p.distanceFromOrigin)   // √(1² + 2² + 3²) ≈ 3.74</code></pre>
+<h3 id="aritmetica">Aritmética</h3>
+<pre class="highlight"><code class="language-kotlin">val a = Point3D(1.0, 2.0, 3.0)
+val b = Point3D(4.0, 5.0, 6.0)
+
+val soma   = a + b        // Point3D(5.0, 7.0, 9.0)
+val dif    = b - a        // Point3D(3.0, 3.0, 3.0)
+val escalado = a * 2.0    // Point3D(2.0, 4.0, 6.0)
+val neg    = -a           // Point3D(-1.0, -2.0, -3.0)</code></pre>
+<h3 id="desestruturacao">Desestruturação</h3>
+<pre class="highlight"><code class="language-kotlin">val (x, y, z) = Point3D(1.0, 2.0, 3.0)</code></pre>
+<h3 id="distancia">Distância</h3>
+<pre class="highlight"><code class="language-kotlin">val d = Point3D(0.0, 0.0, 0.0).distanceBetween(Point3D(1.0, 2.0, 2.0))  // 3.0</code></pre>
+<h3 id="rotacao">Rotação</h3>
+<p>A rotação usa um eixo (qualquer <code>VectorialEntity3D</code>) e um ângulo:</p>
+<pre class="highlight"><code class="language-kotlin">import space.elements.Direction3D
+import units.Angle
+
+val p = Point3D(1.0, 0.0, 0.0)
+
+// Rotacionar 90° em torno do eixo z
+val rotado = p.rotate(Direction3D.MAIN_Z_DIRECTION, Angle.Degrees(90.0))
+// → Point3D(0.0, 1.0, 0.0)</code></pre>
+<h3 id="conversao">Conversão</h3>
+<pre class="highlight"><code class="language-kotlin">// Para um Vector3D (posição na origem)
+val v: Vector3D = p.asVector3D()
+
+// Para coordenadas cilíndricas
+val cil: CylindricalCoordinate = p.toCylindricalCoordinate()</code></pre>
+<hr />
+<h2 id="vector3d">Vector3D</h2>
+<p>Um vetor 3D com posição de cauda explícita (<code>Point3D(0,0,0)</code> por padrão).</p>
+<pre class="highlight"><code class="language-kotlin">import space.elements.Vector3D
+import space.elements.Point3D
+
+// Apenas componentes (cauda na origem)
+val v = Vector3D(1.0, 0.0, 0.0)
+
+// Vetor ancorado
+val v2 = Vector3D(0.0, 0.0, 1.0, position = Point3D(1.0, 1.0, 0.0))
+
+// A partir de dois pontos
+val v3 = Vector3D(
+    headPosition = Point3D(3.0, 4.0, 5.0),
+    tailPosition = Point3D(1.0, 2.0, 3.0)
+)</code></pre>
+<h3 id="propriedades">Propriedades</h3>
+<pre class="highlight"><code class="language-kotlin">val v = Vector3D(0.0, 3.0, 4.0)
+println(v.module)         // 5.0
+println(v.direction)      // Direction3D(0.0, 0.6, 0.8)
+println(v.headPosition)   // Point3D(0.0, 3.0, 4.0)</code></pre>
+<h3 id="produto-escalar-e-vetorial">Produto escalar e vetorial</h3>
+<pre class="highlight"><code class="language-kotlin">val a = Vector3D(1.0, 0.0, 0.0)
+val b = Vector3D(0.0, 1.0, 0.0)
+
+println(a.dot(b))    // 0.0
+
+val cross: Vector3D = a.cross(b)   // (0, 0, 1)</code></pre>
+<h3 id="angulo-entre-vetores">Ângulo entre vetores</h3>
+<pre class="highlight"><code class="language-kotlin">import units.Angle
+
+val angulo: Angle.Radians = a.angleBetween(b)</code></pre>
+<hr />
+<h2 id="direction3d">Direction3D</h2>
+<p>Um vetor de direção 3D unitário. Os componentes são normalizados automaticamente.</p>
+<pre class="highlight"><code class="language-kotlin">import space.elements.Direction3D
+
+val d = Direction3D(1.0, 1.0, 0.0)  // normalizado para (√2/2, √2/2, 0)
+println(d.module)                    // 1.0</code></pre>
+<h3 id="constantes-embutidas">Constantes embutidas</h3>
+<pre class="highlight"><code class="language-kotlin">Direction3D.MAIN_X_DIRECTION   // (1, 0, 0)
+Direction3D.MAIN_Y_DIRECTION   // (0, 1, 0)
+Direction3D.MAIN_Z_DIRECTION   // (0, 0, 1)</code></pre>
+<h3 id="produto-vetorial">Produto vetorial</h3>
+<pre class="highlight"><code class="language-kotlin">val x = Direction3D.MAIN_X_DIRECTION
+val y = Direction3D.MAIN_Y_DIRECTION
+
+val z: Direction3D = x.cross(y)   // (0, 0, 1)</code></pre>
+<h3 id="rotacao_1">Rotação</h3>
+<pre class="highlight"><code class="language-kotlin">import units.Angle
+
+val d = Direction3D.MAIN_X_DIRECTION
+
+// Rotacionar 90° em torno do eixo z
+val rotado = d.rotate(Direction3D.MAIN_Z_DIRECTION, Angle.Degrees(90.0))
+// → Direction3D(0, 1, 0)</code></pre>
+<hr />
+<h2 id="cylindricalcoordinate">CylindricalCoordinate</h2>
+<p>Representa um ponto na forma cilíndrica (raio, ângulo, z) e converte para <code>Point3D</code>.</p>
+<pre class="highlight"><code class="language-kotlin">import space.elements.CylindricalCoordinate
+import units.Angle
+
+val cil = CylindricalCoordinate(radius = 2.0, angle = Angle.Degrees(90.0), z = 3.0)
+val p: Point3D = cil.toPoint3D()</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../../../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../js/base.js"></script>
+        <script src="../../../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

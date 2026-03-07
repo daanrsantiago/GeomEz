@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="A Kotlin library for building and visualizing 2D and 3D geometric elements">
+        
+        <link rel="canonical" href="https://daanrsantiago.github.io/GeomEz/">
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>GeomEz</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/fontawesome.min.css" rel="stylesheet">
+        <link href="css/brands.min.css" rel="stylesheet">
+        <link href="css/solid.min.css" rel="stylesheet">
+        <link href="css/v4-font-face.min.css" rel="stylesheet">
+        <link href="css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body class="homepage">
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href=".">GeomEz</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href="." class="nav-link active" aria-current="page">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="installation/" class="nav-link">Installation</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">2D Geometry</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="2d/" class="dropdown-item">Overview</a>
+</li>
+                                    
+<li>
+    <a href="2d/primitives/" class="dropdown-item">Primitives</a>
+</li>
+                                    
+<li>
+    <a href="2d/coordinate-systems/" class="dropdown-item">Coordinate Systems</a>
+</li>
+                                    
+<li>
+    <a href="2d/functions/" class="dropdown-item">Functions</a>
+</li>
+                                    
+<li>
+    <a href="2d/curves/" class="dropdown-item">Curves</a>
+</li>
+                                    
+<li>
+    <a href="2d/polygons/" class="dropdown-item">Polygons & Collections</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">3D Geometry</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="3d/" class="dropdown-item">Overview</a>
+</li>
+                                    
+<li>
+    <a href="3d/primitives/" class="dropdown-item">Primitives</a>
+</li>
+                                    
+<li>
+    <a href="3d/coordinate-systems/" class="dropdown-item">Coordinate Systems</a>
+</li>
+                                    
+<li>
+    <a href="3d/curves-and-surfaces/" class="dropdown-item">Curves & Surfaces</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a href="units/" class="nav-link">Units</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="visualization/" class="nav-link">Visualization</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" class="nav-link disabled">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="installation/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/daanrsantiago/GeomEz/edit/master/docs/index.md" class="nav-link">Edit on daanrsantiago/GeomEz
+                                    </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#geomez" class="nav-link">GeomEz</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#modules" class="nav-link">Modules</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#highlights" class="nav-link">Highlights</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#quick-example" class="nav-link">Quick example</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#getting-started" class="nav-link">Getting started</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<p align="center">
+  <img src="img/favicon.ico" alt="GeomEz Logo" width="250" style="border-radius: 50%; background: transparent; border: none;"/>
+</p>
+
+<h1 id="geomez">GeomEz</h1>
+<p>🇺🇸 English | <a href="pt_BR/">🇧🇷 Português</a></p>
+<p><strong>GeomEz</strong> is a Kotlin library for building and visualizing 2D and 3D geometric elements. It provides a clean, expressive API for representing points, vectors, directions, coordinate systems, curves, surfaces, and polygons — with full support for affine transforms, analytical calculus on functions, and optional matplotlib-powered visualization.</p>
+<hr />
+<h2 id="modules">Modules</h2>
+<table>
+<thead>
+<tr>
+<th>Module</th>
+<th>Artifact</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>geomez-core</code></td>
+<td><code>com.geomez:geomez-core:1.0.0</code></td>
+<td>Geometric types, math primitives, and operations. No rendering dependency.</td>
+</tr>
+<tr>
+<td><code>geomez-visualization</code></td>
+<td><code>com.geomez:geomez-visualization:1.0.0</code></td>
+<td>Adds <code>.plot()</code> and <code>.addPlotCommands()</code> to all core types via Python matplotlib.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="highlights">Highlights</h2>
+<ul>
+<li>Immutable, arithmetic-friendly <code>Point2D</code>, <code>Vector2D</code>, <code>Direction2D</code> (and 3D counterparts)</li>
+<li>Affine transforms — <code>rotate()</code>, <code>changeBasis()</code> — backed by 3×3 / 4×4 matrices</li>
+<li>Scalar functions with analytical derivatives and integrals: <code>Polynomial</code>, <code>LinearSpline</code>, <code>CubicSpline</code></li>
+<li>Parametric curves: <code>BezierCurve</code>, <code>CubicBezierSpline2D</code>, <code>ParametricCurve3D</code></li>
+<li>Parametric surfaces: <code>ParametricSurface3D</code> with numerical normal vector computation</li>
+<li>Floating-point–safe equality via delta comparison</li>
+<li>One-liner visualization for every type</li>
+</ul>
+<hr />
+<h2 id="quick-example">Quick example</h2>
+<pre class="highlight"><code class="language-kotlin">import plane.BezierCurve
+import plane.elements.Point2D
+
+val bezier = BezierCurve(listOf(
+    Point2D(0.0, 0.0),
+    Point2D(0.5, 1.5),
+    Point2D(1.5, 1.5),
+    Point2D(2.0, 0.0)
+))
+
+val midPoint = bezier(0.5)   // evaluate at t = 0.5
+bezier.plot()                // opens a matplotlib window</code></pre>
+<hr />
+<h2 id="getting-started">Getting started</h2>
+<p>→ <a href="installation/">Installation</a></p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = ".",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="js/base.js"></script>
+        <script src="search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
+
+<!--
+MkDocs version : 1.6.1
+Build Date UTC : 2026-03-07 01:27:08.123050+00:00
+-->
